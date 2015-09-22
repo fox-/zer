@@ -29,47 +29,49 @@ Rebuild target 'Target 1'
 compiling main.c...
 utilities.h(41): warning:  #1-D: last line of file ends without a newline
   #endif
-main.c(103): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+main.c(102): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
                 sprintf(UART_DATA_OUT, "|-->>>>>  INITIAL SEQUENCE  <<<<<--|\n\r");
-main.c(105): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+main.c(104): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
                 sprintf(UART_DATA_OUT, "|--STEP CHECK--| Pos = %i || Angle= %i %%\n\r", stepWatch, calcStepAngle());
-main.c(108): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+main.c(107): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
                 sprintf(UART_DATA_OUT, "|---ADC CHECK--| ADC_1 = %i mV\n\r", ADC1_VAL);
-main.c(111): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+main.c(110): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
                 sprintf(UART_DATA_OUT, "|---ADC CHECK--| ADC_1 = %i mV\n\r", ADC1_VAL);
-main.c(114): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+main.c(113): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
                 sprintf(UART_DATA_OUT, "|---ADC CHECK--| ADC_1 = %i mV\n\r", ADC1_VAL);
-main.c(116): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+main.c(115): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
                 sprintf(UART_DATA_OUT, "| ============ = END = ============ |\n\r");
-main.c(129): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+main.c(119): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+                                sprintf(UART_DATA_OUT, "|--- RETURNING TO INITIAL POINT...  ---|\n\r");
+main.c(138): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
                                                         sprintf(UART_DATA_OUT, " --- ZER: init MODE ---\n\r");
-main.c(131): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+main.c(140): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
                                                         sprintf(UART_DATA_OUT, "|--INITIAL--| Pos = %i || Angle= %i %%\n\r", stepWatch, calcStepAngle());
-main.c(133): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
-                                                        sprintf(UART_DATA_OUT, "|--INITIAL--| MIN = %i || MAX= %i \n\r", GetThMin(), GetThMax());
 main.c(142): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+                                                        sprintf(UART_DATA_OUT, "|--INITIAL--| MIN = %i || MAX= %i \n\r", GetThMin(), GetThMax());
+main.c(151): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
                                                         sprintf(UART_DATA_OUT, " --- ZER: config MODE ---\n\r");
-main.c(147): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
-                                                                                                sprintf(UART_DATA_OUT, " --- ZER: please set the MIN throttle position by pushing <B> ---\n\r");
 main.c(156): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
-                                                                                                sprintf(UART_DATA_OUT, " --- ZER: please set the MAX throttle position by pushing <F> ---\n\r");
-main.c(163): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
-                                                                                                sprintf(UART_DATA_OUT, " --- ZER: Config is done! ---\n\r");
+                                                                                                sprintf(UART_DATA_OUT, " --- ZER: please set the MIN throttle position by pushing <B> ---\n\r");
 main.c(165): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+                                                                                                sprintf(UART_DATA_OUT, " --- ZER: please set the MAX throttle position by pushing <F> ---\n\r");
+main.c(172): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+                                                                                                sprintf(UART_DATA_OUT, " --- ZER: Config is done! ---\n\r");
+main.c(174): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
                                                                                                 sprintf(UART_DATA_OUT, " --- ZER: MIN = %i || MAX = %i ---\n\r", GetThMin(), GetThMax());
-main.c(167): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+main.c(176): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
                                                                                                 sprintf(UART_DATA_OUT, " --- ZER: <exit> to change mode ---\n\r");
-main.c(169): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+main.c(178): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
                                                                                                 sprintf(UART_DATA_OUT, " --- ZER: <config> to reconfigure MIN & MAX ---\n\r");
-main.c(180): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+main.c(189): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
                                                         sprintf(UART_DATA_OUT, " --- ZER: manual MODE ---\n\r");
-main.c(188): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+main.c(197): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
                                                         sprintf(UART_DATA_OUT, " --- ZER: adc_read MODE ---\n\r");
-main.c(193): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+main.c(202): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
                                                                         sprintf(UART_DATA_OUT, "ADC_1 = %i mV\n\r", ADC1_VAL);
-main.c(199): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+main.c(208): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
                                                         sprintf(UART_DATA_OUT, " --- ZER: normal MODE ---\n\r");
-main.c: 21 warnings, 0 errors
+main.c: 22 warnings, 0 errors
 assembling startup_rvmdk.S...
 compiling utilities.c...
 utilities.h(41): warning:  #1-D: last line of file ends without a newline
@@ -134,8 +136,8 @@ utilities.h(41): warning:  #1-D: last line of file ends without a newline
   #endif
 eeprom_lib.c: 1 warning, 0 errors
 linking...
-Program Size: Code=8556 RO-data=1092 RW-data=1644 ZI-data=916  
-".\Objects\ZER_1.axf" - 0 Error(s), 48 Warning(s).
+Program Size: Code=8664 RO-data=1092 RW-data=1644 ZI-data=916  
+".\Objects\ZER_1.axf" - 0 Error(s), 49 Warning(s).
 
 <h2>Collection of Component include folders:</h2>
   C:\Main\Projects\WindDiesel\Repos\zer\RTE

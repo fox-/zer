@@ -97,9 +97,8 @@ int main(void)
 			stepMaxPos = GetThMax();
 		}
 		
-	
 		stepWatch = GetThPos();
-		//stepAngle = (stepWatch*100)/stepMaxPos;
+		
 		sprintf(UART_DATA_OUT, "|-->>>>>  INITIAL SEQUENCE  <<<<<--|\n\r");
 		UARTSend(UART_DATA_OUT);
 		sprintf(UART_DATA_OUT, "|--STEP CHECK--| Pos = %i || Angle= %i %%\n\r", stepWatch, calcStepAngle());
@@ -115,6 +114,16 @@ int main(void)
 		UARTSend(UART_DATA_OUT);
 		sprintf(UART_DATA_OUT, "| ============ = END = ============ |\n\r");
 		UARTSend(UART_DATA_OUT);
+		
+		if ((stepWatch>stepMinPos) && (stepWatch<=stepMaxPos)){
+				sprintf(UART_DATA_OUT, "|--- RETURNING TO INITIAL POINT...  ---|\n\r");
+				UARTSend(UART_DATA_OUT);
+				StepEn_Go();
+				while (stepWatch > stepMinPos){
+					Th_BWD();
+				}
+				StepEn_Stop();
+		}
 		
 		//program.mode = initial;
 		program.mode = normal;
