@@ -23,5 +23,6 @@
 .\objects\main.o: config.h
 .\objects\main.o: utilities.h
 .\objects\main.o: uart_lib.h
+.\objects\main.o: rf_lib.h
 .\objects\main.o: adc_lib.h
 .\objects\main.o: eeprom_lib.h

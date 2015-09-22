@@ -468,6 +468,16 @@
               <FileType>5</FileType>
               <FilePath>.\eeprom_lib.h</FilePath>
             </File>
+            <File>
+              <FileName>rf_lib.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\rf_lib.c</FilePath>
+            </File>
+            <File>
+              <FileName>rf_lib.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\rf_lib.h</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

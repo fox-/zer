@@ -134,6 +134,35 @@ void UARTSend(const uint8_t *pui8Buffer)
 		UART_Out_Clear();
 }
 
+void UART_from_RF_Send(const uint8_t *pui8Buffer)
+{
+		uint8_t i = 0;
+		uint8_t selfcount = 0;
+		uint8_t temp_arr[128]={0};
+		for (i=0;i<128;i++){
+			temp_arr[i] = pui8Buffer[i];
+			selfcount += 1;
+			if (temp_arr[i] == 0x00) break;
+		}
+		selfcount -= 1;
+	//uint8_t delay = 10;
+    //
+    // Loop while there are more characters to send.
+    //
+		i=0;
+    while(selfcount--)
+    {
+        //
+        // Write the next character to the UART.
+        //
+        //UARTCharPutNonBlocking(UART0_BASE, *pui8Buffer++);
+				UARTCharPut(UART0_BASE, temp_arr[i]);
+				i++;
+				//MKS_DELAY (delay);
+    }
+		UART_Out_Clear();
+}
+
 //*****************************************************************************
 //
 // This example demonstrates how to send a string of data to the UART.
@@ -221,6 +250,10 @@ void UART0IntHandler(void){
 							programMode = normal;
 							program.mode = normal;
 
+					} else if (!(strcmp(UART_DATA_IN, "rf"))) {
+							programMode = rf;
+							program.mode = rf;
+						
 					} else if (!(strcmp(UART_DATA_IN, "clean"))) {
 							stepWatch = 0;
 							calcStepAngle();
@@ -283,6 +316,11 @@ void UART0IntHandler(void){
 											};
 									break;
 							}
+					} else if (program.mode == rf) {
+								RFSend(UART_DATA_IN);
+								program.modeState = modeON;
+								program.mode = rf;
+
 					} else {
 							sprintf(UART_DATA_OUT, " -!!!- UNKNOWN COMMAND -!!!-\n\r");
 							UARTSend(UART_DATA_OUT);

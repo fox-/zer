@@ -24,12 +24,15 @@
 #include "config.h"
 #include "utilities.h"
 #include "uart_lib.h"
+#include "rf_lib.h" 
 #include "adc_lib.h"
 #include "eeprom_lib.h"
 
 
 uint8_t UART_DATA_IN[256]={0};
 uint8_t UART_DATA_OUT[256]={0};
+uint8_t RF_DATA_IN[256]={0};
+uint8_t RF_DATA_OUT[256]={0};
 uint32_t ADC_BUFFER[10] ={0};
 uint32_t ADC0_VAL = 0;
 uint32_t ADC1_VAL = 0;
@@ -68,6 +71,8 @@ int main(void)
     StepPortsInit();
 
 		UART_Init();
+	
+		RF_Init();
 	
 		ADC_Init();
 	
@@ -126,6 +131,7 @@ int main(void)
 				sprintf(UART_DATA_OUT, "|--INITIAL--| Pos = %i || Angle= %i %%\n\r", stepWatch, calcStepAngle());
 				UARTSend(UART_DATA_OUT);
 				sprintf(UART_DATA_OUT, "|--INITIAL--| MIN = %i || MAX= %i \n\r", GetThMin(), GetThMax());
+				
 				UARTSend(UART_DATA_OUT);
 		}
 		
@@ -135,7 +141,7 @@ int main(void)
 		
 		while(1){
 		
-				switch(program.mode){
+				switch(program.mode){ //<-- BEGINNING OF SWITCH BETWEEN MODES
 					case initial:
 							program.modeState = modeOFF;
 							sprintf(UART_DATA_OUT, " --- ZER: init MODE ---\n\r");
@@ -225,8 +231,17 @@ int main(void)
 									GPIOPinWrite(GPIO_PORTF_BASE, LED_RED|LED_BLUE|LED_GREEN, light);
 									if (stepWatch != stepWatchOld) stepWatchOld = stepWatch;
 								}
+								break;
+						case rf:
+							program.modeState = modeON;
+							sprintf(UART_DATA_OUT, " --- ZER: RF MODE ---\n\r");
+							UARTSend(UART_DATA_OUT);
+							while(program.modeState == modeON){
 									
-							}
+								}
+								break;
+								
+							}//<--- END OF SWITCH BETWEEN MODES
 					}
 				
 			}

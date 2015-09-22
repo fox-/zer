@@ -52,6 +52,7 @@ CONFIGURATION VARIABLES
 #define manual 		17
 #define normal 		19
 #define adc_read	21
+#define rf				23
 
 #define modeON		23
 #define modeOFF		25
