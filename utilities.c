@@ -140,18 +140,24 @@ uint8_t BUTTON2_ON (void){
 
 void But1_Forward(void){
 	if(BUTTON1_ON()) {
-			Th_FWD();
-			sprintf(UART_DATA_OUT, "|--FORWARD--| Pos = %i || Angle= %i %%\n\r", stepWatch, stepAngle);
-			GPIOPinWrite(GPIO_PORTF_BASE, LED_RED|LED_BLUE|LED_GREEN, light);
+			StepEn_Go();
+			while (BUTTON1_ON()){
+				Th_FWD();
+				GPIOPinWrite(GPIO_PORTF_BASE, LED_RED|LED_BLUE|LED_GREEN, light);
+				}
+			StepEn_Stop();
 			}
 			
 }
 
 void But2_Backward(void){
 	if(BUTTON2_ON()){
-			Th_BWD();
-			sprintf(UART_DATA_OUT, "|--BACKWARD--| Pos = %i || Angle= %i %%\n\r", stepWatch, stepAngle);
-			GPIOPinWrite(GPIO_PORTF_BASE, LED_RED|LED_BLUE|LED_GREEN, light);
+			StepEn_Go();
+			while (BUTTON2_ON()){
+				Th_BWD();
+				GPIOPinWrite(GPIO_PORTF_BASE, LED_RED|LED_BLUE|LED_GREEN, light);
+				}
+			StepEn_Stop();
 			}
       
 }

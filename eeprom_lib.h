@@ -8,13 +8,11 @@ uint32_t GetThPos(void);
 void SaveThMin(void);
 
 uint32_t GetThMin(void);
-
-void SetThMin(void);
 	
 void SaveThMax(void);
 
 uint32_t GetThMax(void);
 
-void SetThMax(void);
+uint32_t calcStepAngle(void);
 
 #endif

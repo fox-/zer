@@ -44,7 +44,7 @@ uint32_t stepAngle = 0;
 uint32_t stepAngleOld = 0;
 uint32_t light=0;
 uint32_t stepMinPos = 0;
-uint32_t stepMaxPos = 4000;
+uint32_t stepMaxPos = 0;
 
 uint32_t thPos[1] = {0};
 uint32_t thMax[1] = {0};
@@ -83,6 +83,7 @@ int main(void)
 		
 		if (GetThMin() == 0xFFFFFFFF){
 			stepWatch = 0x00000000;
+			stepMinPos = stepWatch;
 			SaveThMin();
 		} else {
 			stepMinPos = GetThMin();
@@ -90,6 +91,7 @@ int main(void)
 		
 		if (GetThMax() == 0xFFFFFFFF){
 			stepWatch = 0x00000000;
+			stepMaxPos = stepWatch;
 			SaveThMax();
 		} else {
 			stepMaxPos = GetThMax();
@@ -97,13 +99,10 @@ int main(void)
 		
 	
 		stepWatch = GetThPos();
-		stepAngle = (stepWatch*100)/stepMaxPos;
-		sprintf(UART_DATA_OUT, "|-->>>>>  INITIAL SEQUENCE  <<<<<--|\n\r", stepWatch, stepAngle);
+		//stepAngle = (stepWatch*100)/stepMaxPos;
+		sprintf(UART_DATA_OUT, "|-->>>>>  INITIAL SEQUENCE  <<<<<--|\n\r");
 		UARTSend(UART_DATA_OUT);
-		sprintf(UART_DATA_OUT, "|--STEP CHECK--| Pos = %i || Angle= %i %%\n\r", stepWatch, stepAngle);
-		UARTSend(UART_DATA_OUT);
-		ADC1_VAL = GetADCVal(AIN1);
-		sprintf(UART_DATA_OUT, "|---ADC CHECK--| ADC_1 = %i mV\n\r", ADC1_VAL);
+		sprintf(UART_DATA_OUT, "|--STEP CHECK--| Pos = %i || Angle= %i %%\n\r", stepWatch, calcStepAngle());
 		UARTSend(UART_DATA_OUT);
 		ADC1_VAL = GetADCVal(AIN1);
 		sprintf(UART_DATA_OUT, "|---ADC CHECK--| ADC_1 = %i mV\n\r", ADC1_VAL);
@@ -111,7 +110,10 @@ int main(void)
 		ADC1_VAL = GetADCVal(AIN1);
 		sprintf(UART_DATA_OUT, "|---ADC CHECK--| ADC_1 = %i mV\n\r", ADC1_VAL);
 		UARTSend(UART_DATA_OUT);
-		sprintf(UART_DATA_OUT, "| ============ = END = ============ |\n\r", stepWatch, stepAngle);
+		ADC1_VAL = GetADCVal(AIN1);
+		sprintf(UART_DATA_OUT, "|---ADC CHECK--| ADC_1 = %i mV\n\r", ADC1_VAL);
+		UARTSend(UART_DATA_OUT);
+		sprintf(UART_DATA_OUT, "| ============ = END = ============ |\n\r");
 		UARTSend(UART_DATA_OUT);
 		
 		//program.mode = initial;
@@ -126,7 +128,7 @@ int main(void)
 							program.modeState = modeOFF;
 							sprintf(UART_DATA_OUT, " --- ZER: init MODE ---\n\r");
 							UARTSend(UART_DATA_OUT);
-							sprintf(UART_DATA_OUT, "|--INITIAL--| Pos = %i || Angle= %i %%\n\r", stepWatch, stepAngle);
+							sprintf(UART_DATA_OUT, "|--INITIAL--| Pos = %i || Angle= %i %%\n\r", stepWatch, calcStepAngle());
 							UARTSend(UART_DATA_OUT);
 							sprintf(UART_DATA_OUT, "|--INITIAL--| MIN = %i || MAX= %i \n\r", GetThMin(), GetThMax());
 							UARTSend(UART_DATA_OUT);
@@ -147,15 +149,16 @@ int main(void)
 												while (program.configMode != configBWD){
 														ButtonsOperation();
 												}
-												SetThMin();
+												SaveThMin();
 											break;
 										case configBWD:
+												stepWatch = 0;
 												sprintf(UART_DATA_OUT, " --- ZER: please set the MAX throttle position by pushing <F> ---\n\r");
 												UARTSend(UART_DATA_OUT);
 												while (program.configMode != configFWD){
 														ButtonsOperation();
 												}
-												SetThMax();
+												SaveThMax();
 												
 												sprintf(UART_DATA_OUT, " --- ZER: Config is done! ---\n\r");
 												UARTSend(UART_DATA_OUT);

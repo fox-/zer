@@ -34,6 +34,11 @@
 
 extern uint8_t UART_DATA_IN[];
 extern uint8_t UART_DATA_OUT[];
+extern uint32_t stepWatch;
+extern uint32_t stepAngle;
+extern uint32_t stepMinPos;
+extern uint32_t stepMaxPos;
+
 
 extern struct stateStr program;
 //*****************************************************************************
@@ -216,6 +221,20 @@ void UART0IntHandler(void){
 							programMode = normal;
 							program.mode = normal;
 
+					} else if (!(strcmp(UART_DATA_IN, "clean"))) {
+							stepWatch = 0;
+							calcStepAngle();
+							SaveThPos();
+							SaveThMin();
+							SaveThMax();
+							stepMinPos = 0;
+							stepMaxPos = 0;
+							sprintf(UART_DATA_OUT, "|--INTERNAL VARIABLES RESET--|\n\r");
+							UARTSend(UART_DATA_OUT);
+							sprintf(UART_DATA_OUT, "|--INITIAL--| Pos = %i || Angle= %i %%\n\r", stepWatch, calcStepAngle());
+							UARTSend(UART_DATA_OUT);
+							sprintf(UART_DATA_OUT, "|--INITIAL--| MIN = %i || MAX= %i \n\r", GetThMin(), GetThMax());
+							UARTSend(UART_DATA_OUT);
 					} else {
 							sprintf(UART_DATA_OUT, " -!!!- UNKNOWN COMMAND -!!!-\n\r");
 							UARTSend(UART_DATA_OUT);

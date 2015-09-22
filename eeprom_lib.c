@@ -31,6 +31,9 @@ extern uint32_t thPos[];
 extern uint32_t stepWatch;
 extern uint32_t thMax[];
 extern uint32_t thMin[];
+extern uint32_t stepAngle;
+extern uint32_t stepMinPos;
+extern uint32_t stepMaxPos;
 
 
 void SaveThPos(void){
@@ -46,7 +49,10 @@ uint32_t GetThPos(void){
 }
 
 void SaveThMin(void){
+	stepWatch = 0;
+	SaveThPos();
 	thMin[0] = stepWatch;
+	stepMinPos = stepWatch;
 	ROM_EEPROMProgram(thMin, 0x08, 4);
 }
 
@@ -55,15 +61,10 @@ uint32_t GetThMin(void){
 	ROM_EEPROMRead(thMin, 0x08, 4);
 	return thMin[0];
 }
-
-void SetThMin(void){
-		stepWatch = 0;
-		SaveThPos();
-		SaveThMin();
-}
 	
 void SaveThMax(void){
 	thMax[0] = stepWatch;
+	stepMaxPos = stepWatch;
 	ROM_EEPROMProgram(thMax, 0x12, 4);
 }
 
@@ -73,8 +74,9 @@ uint32_t GetThMax(void){
 	return thMax[0];
 }	
 
-void SetThMax(void){
-		SaveThMax();
+uint32_t calcStepAngle(void){
+	stepAngle = (GetThPos()*100)/GetThMax();
+	return stepAngle;
 }
 
  #endif
