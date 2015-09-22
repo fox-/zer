@@ -123,6 +123,10 @@ int main(void)
 					Th_BWD();
 				}
 				StepEn_Stop();
+				sprintf(UART_DATA_OUT, "|--INITIAL--| Pos = %i || Angle= %i %%\n\r", stepWatch, calcStepAngle());
+				UARTSend(UART_DATA_OUT);
+				sprintf(UART_DATA_OUT, "|--INITIAL--| MIN = %i || MAX= %i \n\r", GetThMin(), GetThMax());
+				UARTSend(UART_DATA_OUT);
 		}
 		
 		//program.mode = initial;
@@ -130,7 +134,6 @@ int main(void)
 		program.modeState = modeOFF;
 		
 		while(1){
-		
 		
 				switch(program.mode){
 					case initial:

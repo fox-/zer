@@ -235,6 +235,13 @@ void UART0IntHandler(void){
 							UARTSend(UART_DATA_OUT);
 							sprintf(UART_DATA_OUT, "|--INITIAL--| MIN = %i || MAX= %i \n\r", GetThMin(), GetThMax());
 							UARTSend(UART_DATA_OUT);
+					} else if (!(strcmp(UART_DATA_IN, "check"))) {
+						
+							sprintf(UART_DATA_OUT, "|--INITIAL--| Pos = %i || Angle= %i %%\n\r", stepWatch, calcStepAngle());
+							UARTSend(UART_DATA_OUT);
+							sprintf(UART_DATA_OUT, "|--INITIAL--| MIN = %i || MAX= %i \n\r", GetThMin(), GetThMax());
+							UARTSend(UART_DATA_OUT);
+						
 					} else {
 							sprintf(UART_DATA_OUT, " -!!!- UNKNOWN COMMAND -!!!-\n\r");
 							UARTSend(UART_DATA_OUT);
