@@ -222,9 +222,13 @@ int main(void)
 									if((ADC1_VAL>2400) && (stepWatch != stepMaxPos)) {
 											StepEn_Go();
 											Th_FWD();
+											sprintf(RF_DATA_OUT, "%i\n\r",calcStepAngle());
+											RFSend(RF_DATA_OUT);
 									} else if((ADC1_VAL<2074) && (ADC1_VAL>1057) && (stepWatch != stepMinPos)) {
 											StepEn_Go();
 											Th_BWD();
+											sprintf(RF_DATA_OUT, "%i\n\r",calcStepAngle());
+											RFSend(RF_DATA_OUT);
 									} else {
 											StepEn_Stop();
 									}

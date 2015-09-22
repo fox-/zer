@@ -179,7 +179,6 @@ void Th_FWD(void){
 	light |= LED_GREEN;
 	StepDir_F(ONE_STEP);
 	stepWatch += ONE_STEP;
-	stepAngle = (stepWatch*100)/stepMaxPos;
 	SaveThPos();
 	//StepEn_Stop();
 }
@@ -189,7 +188,6 @@ void Th_BWD(void){
 	light |= LED_BLUE;
 	StepDir_B(ONE_STEP);	
 	stepWatch -= ONE_STEP;
-	stepAngle = (stepWatch*100)/stepMaxPos;
 	SaveThPos();
 	//StepEn_Stop();
 }

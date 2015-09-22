@@ -75,9 +75,13 @@ main.c(211): warning:  #167-D: argument of type "uint8_t *" is incompatible with
                                                                         sprintf(UART_DATA_OUT, "ADC_1 = %i mV\n\r", ADC1_VAL);
 main.c(217): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
                                                         sprintf(UART_DATA_OUT, " --- ZER: normal MODE ---\n\r");
-main.c(237): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+main.c(225): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+                                                                                        sprintf(RF_DATA_OUT, "%i\n\r",calcStepAngle());
+main.c(230): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+                                                                                        sprintf(RF_DATA_OUT, "%i\n\r",calcStepAngle());
+main.c(241): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
                                                         sprintf(UART_DATA_OUT, " --- ZER: RF MODE ---\n\r");
-main.c: 25 warnings, 0 errors
+main.c: 27 warnings, 0 errors
 assembling startup_rvmdk.S...
 compiling utilities.c...
 utilities.h(41): warning:  #1-D: last line of file ends without a newline
@@ -156,8 +160,8 @@ utilities.h(41): warning:  #1-D: last line of file ends without a newline
   #endif
 rf_lib.c: 1 warning, 0 errors
 linking...
-Program Size: Code=9476 RO-data=1092 RW-data=1644 ZI-data=1428  
-".\Objects\ZER_1.axf" - 0 Error(s), 58 Warning(s).
+Program Size: Code=9484 RO-data=1092 RW-data=1644 ZI-data=1428  
+".\Objects\ZER_1.axf" - 0 Error(s), 60 Warning(s).
 
 <h2>Collection of Component include folders:</h2>
   C:\Main\Projects\WindDiesel\Repos\zer\RTE
