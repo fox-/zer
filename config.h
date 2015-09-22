@@ -42,7 +42,7 @@ CONFIGURATION VARIABLES
 //=============================================================
 
 #define STEP_DELAY			600 // 3000us=3ms
-#define ONE_STEP				50
+//#define ONE_STEP				50
 #define SIGNALS_DELAY 	10
 #define ADC_DELAY 			3000
 

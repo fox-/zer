@@ -54,6 +54,11 @@ uint32_t thMax[1] = {0};
 uint32_t thMin[1] = {0};
 uint32_t configMode = 0;
 
+uint32_t ONE_STEP = 50;
+uint32_t minSpeed = 20;
+uint32_t maxSpeed = 200;
+uint32_t difSpeed = 0;
+
 // --- State variables ----
 
 uint32_t stateConfig = 0;
@@ -63,6 +68,8 @@ struct stateStr* progPtr;
 
 int main(void)
 {		
+		difSpeed = maxSpeed - minSpeed;
+	
 		progPtr = &program;
 	
 		ROM_SysCtlClockSet(SYSCTL_SYSDIV_5|SYSCTL_USE_PLL|SYSCTL_XTAL_16MHZ|SYSCTL_OSC_MAIN);
@@ -220,11 +227,13 @@ int main(void)
 									light = 0;
 									ADC1_VAL = GetADCVal(AIN1);
 									if((ADC1_VAL>2400) && (stepWatch != stepMaxPos)) {
+											ONE_STEP = minSpeed + ((ADC1_VAL*difSpeed-2400*difSpeed)/899);
 											StepEn_Go();
 											Th_FWD();
 											sprintf(RF_DATA_OUT, "%i\n\r",calcStepAngle());
 											RFSend(RF_DATA_OUT);
 									} else if((ADC1_VAL<2074) && (ADC1_VAL>1057) && (stepWatch != stepMinPos)) {
+											ONE_STEP = minSpeed + ((2074*difSpeed-ADC1_VAL*difSpeed)/1017);
 											StepEn_Go();
 											Th_BWD();
 											sprintf(RF_DATA_OUT, "%i\n\r",calcStepAngle());

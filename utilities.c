@@ -47,6 +47,7 @@ extern uint32_t stepAngleOld;
 extern uint32_t light;
 extern uint32_t stepMinPos;
 extern uint32_t stepMaxPos;
+extern uint32_t ONE_STEP;
 
 void MKS_DELAY (uint32_t mks){
 	ROM_SysCtlDelay((ROM_SysCtlClockGet()/(3000000))* mks) ;  // more accurate
