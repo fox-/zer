@@ -8,3 +8,10 @@ ZER_1_Target 1.dep
 ZER_1.uvguix_fox.bak
 ZER_1.uvguix.Пользователь
 ZER_1.uvguix.fox
+Objects/adc_lib.crf
+Objects/adc_lib.crf
+Objects/adc_lib.o
+Objects/main.crf
+Objects/rf_lib.o
+Objects/utilities.crf
+*.crf
