@@ -29,6 +29,7 @@ UTILITY FUNCTIONS FOR TM4C123GH6PM MCU
 #include "config.h"
 #include "utilities.h"
 #include "uart_lib.h"
+#include "adc_lib.h"
 #include "eeprom_lib.h"
 
 #ifdef DEBUG
@@ -49,6 +50,7 @@ extern uint32_t stepMinPos;
 extern uint32_t stepMaxPos;
 extern uint32_t stepPos;
 extern uint32_t nPosOld;
+extern uint32_t ADC1_VAL;
 
 void MKS_DELAY (uint32_t mks){
 	ROM_SysCtlDelay((ROM_SysCtlClockGet()/(3000000))* mks) ;  // more accurate
@@ -209,6 +211,8 @@ void goToPos(int nPos){
 						Th_FWD();
 						sprintf(UART_DATA_OUT, "|--CONTROL FWD-| Pos = %i || Angle= %i %%\n\r", stepWatch, calcStepAngle());
 						UARTSend(UART_DATA_OUT);
+						ADC1_VAL = GetADCVal(AIN1);
+						if (calcPosToGo(ADC1_VAL) != nPosOld) break;
 					}
 					StepEn_Stop();
 		} else if (nPos < stepWatch){
@@ -217,11 +221,30 @@ void goToPos(int nPos){
 						Th_BWD();
 						sprintf(UART_DATA_OUT, "|--CONTROL BWD--| Pos = %i || Angle= %i %%\n\r", stepWatch, calcStepAngle());
 						UARTSend(UART_DATA_OUT);
+						ADC1_VAL = GetADCVal(AIN1);
+						if (calcPosToGo(ADC1_VAL) != nPosOld) break;
 					}
 					StepEn_Stop();
 		}
 	}
 	
 }
+
+uint32_t calcPosToGo(uint32_t adcValue){
+		if (adcValue > 3298) return 100;
+				else if (adcValue > 3250) return 89;//!
+				else if (adcValue > 3160) return 80;//!
+				else if (adcValue > 3080) return 69;//!
+				else if (adcValue > 2990) return 60;//!
+				else if (adcValue > 2900) return 51;//!
+				else if (adcValue > 2810) return 42;//!
+				else if (adcValue > 2730) return 36;//!
+				else if (adcValue > 2650) return 29;//!
+				else if (adcValue > 2560) return 22;//!
+				else if (adcValue > 2480) return 16;//!
+				else if (adcValue > 2390) return 10;//!
+				else if (adcValue > 2310) return 5;//!
+				else if (adcValue < 2310) return 1;//!
+};
 
  #endif

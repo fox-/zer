@@ -40,4 +40,6 @@ void Th_BWD(void);
 
 void goToPos(int nPos);
 
+uint32_t calcPosToGo(uint32_t adcValue);
+
 #endif

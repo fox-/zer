@@ -27,7 +27,7 @@ Project File Date:  09/22/2015
 <h2>Output:</h2>
 Rebuild target 'Target 1'
 compiling main.c...
-utilities.h(43): warning:  #1-D: last line of file ends without a newline
+utilities.h(45): warning:  #1-D: last line of file ends without a newline
   #endif
 main.c(109): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
                 sprintf(UART_DATA_OUT, "|-->>>>>  INITIAL SEQUENCE  <<<<<--|\n\r");
@@ -81,28 +81,30 @@ main.c(236): warning:  #167-D: argument of type "uint8_t *" is incompatible with
                                                                                         sprintf(UART_DATA_OUT, "%i\n\r",calcStepAngle());
 main.c(247): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
                                                         sprintf(UART_DATA_OUT, " --- ZER: neuro MODE ---\n\r");
-main.c(270): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+main.c(257): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
                                                         sprintf(UART_DATA_OUT, " --- ZER: RF MODE ---\n\r");
 main.c: 28 warnings, 0 errors
 assembling startup_rvmdk.S...
 compiling utilities.c...
-utilities.h(43): warning:  #1-D: last line of file ends without a newline
+utilities.h(45): warning:  #1-D: last line of file ends without a newline
   #endif
-utilities.c(58): warning:  #177-D: variable "ui8LED" was declared but never referenced
+utilities.c(60): warning:  #177-D: variable "ui8LED" was declared but never referenced
         uint8_t ui8LED = 2;
-utilities.c(200): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+utilities.c(202): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
                 sprintf(UART_DATA_OUT, "|--NEURO--| going to ... -> %i \n\r", nPos);
-utilities.c(210): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+utilities.c(212): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
                                                 sprintf(UART_DATA_OUT, "|--CONTROL FWD-| Pos = %i || Angle= %i %%\n\r", stepWatch, calcStepAngle());
-utilities.c(218): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+utilities.c(222): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
                                                 sprintf(UART_DATA_OUT, "|--CONTROL BWD--| Pos = %i || Angle= %i %%\n\r", stepWatch, calcStepAngle());
-utilities.c: 5 warnings, 0 errors
+utilities.c(248): warning:  #940-D: missing return statement at end of non-void function "calcPosToGo"
+  };
+utilities.c: 6 warnings, 0 errors
 compiling adc_lib.c...
-utilities.h(43): warning:  #1-D: last line of file ends without a newline
+utilities.h(45): warning:  #1-D: last line of file ends without a newline
   #endif
 adc_lib.c: 1 warning, 0 errors
 compiling uart_lib.c...
-utilities.h(43): warning:  #1-D: last line of file ends without a newline
+utilities.h(45): warning:  #1-D: last line of file ends without a newline
   #endif
 uart_lib.c(233): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *"
                                         if (!(strcmp(UART_DATA_IN, "init"))){
@@ -162,16 +164,16 @@ uart_lib.c(216): warning:  #550-D: variable "programMode" was set but never used
                 uint32_t programMode=program.mode;
 uart_lib.c: 29 warnings, 0 errors
 compiling eeprom_lib.c...
-utilities.h(43): warning:  #1-D: last line of file ends without a newline
+utilities.h(45): warning:  #1-D: last line of file ends without a newline
   #endif
 eeprom_lib.c: 1 warning, 0 errors
 compiling rf_lib.c...
-utilities.h(43): warning:  #1-D: last line of file ends without a newline
+utilities.h(45): warning:  #1-D: last line of file ends without a newline
   #endif
 rf_lib.c: 1 warning, 0 errors
 linking...
-Program Size: Code=10180 RO-data=1092 RW-data=1644 ZI-data=1428  
-".\Objects\ZER_1.axf" - 0 Error(s), 65 Warning(s).
+Program Size: Code=10176 RO-data=1092 RW-data=1644 ZI-data=1428  
+".\Objects\ZER_1.axf" - 0 Error(s), 66 Warning(s).
 
 <h2>Collection of Component include folders:</h2>
   C:\Main\Projects\WindDiesel\Repos\zer\RTE

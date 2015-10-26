@@ -249,20 +249,7 @@ int main(void)
 							while(program.modeState == modeON){
 									//light = 0;
 									ADC1_VAL = GetADCVal(AIN1);
-									if (ADC1_VAL > 3298) {goToPos(100);}
-									else if (ADC1_VAL > 3250) {goToPos(89);}//!
-									else if (ADC1_VAL > 3160) {goToPos(80);}//!
-									else if (ADC1_VAL > 3080) {goToPos(69);}//!
-									else if (ADC1_VAL > 2990) {goToPos(60);}//!
-									else if (ADC1_VAL > 2900) {goToPos(51);}//!
-									else if (ADC1_VAL > 2810) {goToPos(42);}//!
-									else if (ADC1_VAL > 2730) {goToPos(36);}//!
-									else if (ADC1_VAL > 2650) {goToPos(29);}//!
-									else if (ADC1_VAL > 2560) {goToPos(22);}//!
-									else if (ADC1_VAL > 2480) {goToPos(16);}//!
-									else if (ADC1_VAL > 2390) {goToPos(10);}//!
-									else if (ADC1_VAL > 2310) {goToPos(5);}//!
-									
+									goToPos(calcPosToGo(ADC1_VAL));
 								}
 								break;
 						case rf:

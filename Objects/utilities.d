@@ -20,4 +20,5 @@
 .\objects\utilities.o: config.h
 .\objects\utilities.o: utilities.h
 .\objects\utilities.o: uart_lib.h
+.\objects\utilities.o: adc_lib.h
 .\objects\utilities.o: eeprom_lib.h
