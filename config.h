@@ -53,6 +53,7 @@ CONFIGURATION VARIABLES
 #define normal 		19
 #define adc_read	21
 #define rf				23
+#define neuro 		27
 
 #define modeON		23
 #define modeOFF		25

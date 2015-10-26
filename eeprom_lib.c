@@ -34,6 +34,7 @@ extern uint32_t thMin[];
 extern uint32_t stepAngle;
 extern uint32_t stepMinPos;
 extern uint32_t stepMaxPos;
+extern uint32_t stepPos;
 
 
 void SaveThPos(void){
@@ -77,6 +78,11 @@ uint32_t GetThMax(void){
 uint32_t calcStepAngle(void){
 	stepAngle = (GetThPos()*100)/GetThMax();
 	return stepAngle;
+}
+
+uint32_t calcStepPos(uint32_t setAngle){
+	stepPos = ((setAngle*GetThMax())/100);
+	return stepPos;
 }
 
  #endif

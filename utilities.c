@@ -47,6 +47,8 @@ extern uint32_t stepAngleOld;
 extern uint32_t light;
 extern uint32_t stepMinPos;
 extern uint32_t stepMaxPos;
+extern uint32_t stepPos;
+extern uint32_t nPosOld;
 
 void MKS_DELAY (uint32_t mks){
 	ROM_SysCtlDelay((ROM_SysCtlClockGet()/(3000000))* mks) ;  // more accurate
@@ -190,6 +192,36 @@ void Th_BWD(void){
 	stepWatch -= ONE_STEP;
 	SaveThPos();
 	//StepEn_Stop();
+}
+
+void goToPos(int nPos){
+	if (nPosOld != nPos) {
+		nPosOld = nPos;
+		sprintf(UART_DATA_OUT, "|--NEURO--| going to ... -> %i \n\r", nPos);
+		UARTSend(UART_DATA_OUT);
+		GetThPos();
+		calcStepPos(nPos);
+		nPos = stepPos;
+		
+		if (nPos > stepWatch){
+			StepEn_Go();
+					while (stepWatch < nPos){
+						Th_FWD();
+						sprintf(UART_DATA_OUT, "|--CONTROL FWD-| Pos = %i || Angle= %i %%\n\r", stepWatch, calcStepAngle());
+						UARTSend(UART_DATA_OUT);
+					}
+					StepEn_Stop();
+		} else if (nPos < stepWatch){
+			StepEn_Go();
+					while (stepWatch > nPos){
+						Th_BWD();
+						sprintf(UART_DATA_OUT, "|--CONTROL BWD--| Pos = %i || Angle= %i %%\n\r", stepWatch, calcStepAngle());
+						UARTSend(UART_DATA_OUT);
+					}
+					StepEn_Stop();
+		}
+	}
+	
 }
 
  #endif

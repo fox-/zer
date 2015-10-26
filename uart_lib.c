@@ -250,6 +250,10 @@ void UART0IntHandler(void){
 							programMode = normal;
 							program.mode = normal;
 
+					} else if (!(strcmp(UART_DATA_IN, "neuro"))){
+							programMode = neuro;
+							program.mode = neuro;
+
 					} else if (!(strcmp(UART_DATA_IN, "rf"))) {
 							programMode = rf;
 							program.mode = rf;

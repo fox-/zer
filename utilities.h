@@ -38,4 +38,6 @@ void Th_FWD(void);
 
 void Th_BWD(void);
 
+void goToPos(int nPos);
+
 #endif

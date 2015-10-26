@@ -15,4 +15,6 @@ uint32_t GetThMax(void);
 
 uint32_t calcStepAngle(void);
 
+uint32_t calcStepPos(uint32_t setAngle);
+
 #endif
