@@ -126,7 +126,7 @@ int main(void)
 		
 		
 		//program.mode = initial;
-		program.mode = neuro2;
+		program.mode = neuro;
 		programMode = program.mode;
 		program.modeState = modeOFF;
 		
@@ -242,7 +242,13 @@ int main(void)
 								break;
 						case neuro:
 							program.modeState = modeON;
-							sprintf(UART_DATA_OUT, " --- ZER: neuro MODE ---\n\r");
+							sprintf(UART_DATA_OUT, " --- ZER: neuro Standby Mode ---\n\r");
+							UARTSend(UART_DATA_OUT);
+							ADC1_VAL = GetADCVal(AIN1);
+							while (ADC1_VAL <= 1000) {
+									ADC1_VAL = GetADCVal(AIN1);
+							}
+							sprintf(UART_DATA_OUT, " --- ZER: neuro Mode ---\n\r");
 							UARTSend(UART_DATA_OUT);
 							while(program.modeState == modeON){
 									//light = 0;
@@ -252,6 +258,11 @@ int main(void)
 								break;
 						case neuro2:
 							program.modeState = modeON;
+							sprintf(UART_DATA_OUT, " --- ZER: neuro2 Standby Mode ---\n\r");
+							UARTSend(UART_DATA_OUT);
+							while (ADC1_VAL <= 1000) {
+										ADC1_VAL = GetADCVal(AIN1);
+								}
 							sprintf(UART_DATA_OUT, " --- ZER: neuro2 MODE ---\n\r");
 							UARTSend(UART_DATA_OUT);
 							while(program.modeState == modeON){

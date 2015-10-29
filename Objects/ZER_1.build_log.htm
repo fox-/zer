@@ -56,12 +56,16 @@ main.c(227): warning:  #167-D: argument of type "uint8_t *" is incompatible with
 main.c(234): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
                                                                                         sprintf(UART_DATA_OUT, "%i\n\r",calcStepAngle());
 main.c(245): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
-                                                        sprintf(UART_DATA_OUT, " --- ZER: neuro MODE ---\n\r");
-main.c(255): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+                                                        sprintf(UART_DATA_OUT, " --- ZER: neuro Standby Mode ---\n\r");
+main.c(251): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+                                                        sprintf(UART_DATA_OUT, " --- ZER: neuro Mode ---\n\r");
+main.c(261): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+                                                        sprintf(UART_DATA_OUT, " --- ZER: neuro2 Standby Mode ---\n\r");
+main.c(266): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
                                                         sprintf(UART_DATA_OUT, " --- ZER: neuro2 MODE ---\n\r");
-main.c(265): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+main.c(276): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
                                                         sprintf(UART_DATA_OUT, " --- ZER: RF MODE ---\n\r");
-main.c: 26 warnings, 0 errors
+main.c: 28 warnings, 0 errors
 assembling startup_rvmdk.S...
 compiling utilities.c...
 utilities.h(49): warning:  #1-D: last line of file ends without a newline
@@ -162,12 +166,10 @@ utilities.h(49): warning:  #1-D: last line of file ends without a newline
   #endif
 rf_lib.c: 1 warning, 0 errors
 linking...
-Program Size: Code=10824 RO-data=1092 RW-data=1644 ZI-data=1428  
-".\Objects\ZER_1.axf" - 0 Error(s), 70 Warning(s).
+Program Size: Code=10980 RO-data=1092 RW-data=1644 ZI-data=1428  
+".\Objects\ZER_1.axf" - 0 Error(s), 72 Warning(s).
 Load "C:\\Users\\fox\\Documents\\GitHub\\zer\\Objects\\ZER_1.axf" 
 Connecting: Mode=JTAG, Speed=1000000Hz
 Erase Done.
 Programming Done.
-Verify OK.
-amming Done.
 Verify OK.
