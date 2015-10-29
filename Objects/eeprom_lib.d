@@ -1,8 +1,8 @@
 .\objects\eeprom_lib.o: eeprom_lib.c
-.\objects\eeprom_lib.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\objects\eeprom_lib.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-.\objects\eeprom_lib.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
-.\objects\eeprom_lib.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\eeprom_lib.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stdint.h
+.\objects\eeprom_lib.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stdio.h
+.\objects\eeprom_lib.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stdbool.h
+.\objects\eeprom_lib.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\string.h
 .\objects\eeprom_lib.o: C:\ti\TivaWare_C_Series-2.1.0.12573\inc/hw_ints.h
 .\objects\eeprom_lib.o: C:\ti\TivaWare_C_Series-2.1.0.12573\inc/hw_memmap.h
 .\objects\eeprom_lib.o: C:\ti\TivaWare_C_Series-2.1.0.12573\driverlib/interrupt.h

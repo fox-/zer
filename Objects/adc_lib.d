@@ -1,6 +1,6 @@
 .\objects\adc_lib.o: adc_lib.c
-.\objects\adc_lib.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\objects\adc_lib.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\adc_lib.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stdint.h
+.\objects\adc_lib.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stdbool.h
 .\objects\adc_lib.o: C:\ti\TivaWare_C_Series-2.1.0.12573\inc/hw_memmap.h
 .\objects\adc_lib.o: C:\ti\TivaWare_C_Series-2.1.0.12573\inc/hw_types.h
 .\objects\adc_lib.o: C:\ti\TivaWare_C_Series-2.1.0.12573\driverlib/sysctl.h
@@ -9,9 +9,9 @@
 .\objects\adc_lib.o: C:\ti\TivaWare_C_Series-2.1.0.12573\driverlib/uart.h
 .\objects\adc_lib.o: C:\ti\TivaWare_C_Series-2.1.0.12573\driverlib/eeprom.h
 .\objects\adc_lib.o: C:\ti\TivaWare_C_Series-2.1.0.12573\driverlib/adc.h
-.\objects\adc_lib.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-.\objects\adc_lib.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\adc_lib.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\adc_lib.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stdio.h
+.\objects\adc_lib.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stdlib.h
+.\objects\adc_lib.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\string.h
 .\objects\adc_lib.o: adc_lib.h
 .\objects\adc_lib.o: config.h
 .\objects\adc_lib.o: C:\ti\TivaWare_C_Series-2.1.0.12573\driverlib/rom.h

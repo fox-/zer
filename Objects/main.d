@@ -1,9 +1,9 @@
 .\objects\main.o: main.c
-.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
-.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\main.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stdint.h
+.\objects\main.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stdio.h
+.\objects\main.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stdbool.h
+.\objects\main.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\string.h
+.\objects\main.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stdlib.h
 .\objects\main.o: C:\ti\TivaWare_C_Series-2.1.0.12573\inc/hw_types.h
 .\objects\main.o: C:\ti\TivaWare_C_Series-2.1.0.12573\inc/hw_memmap.h
 .\objects\main.o: C:\ti\TivaWare_C_Series-2.1.0.12573\inc/hw_ints.h
@@ -18,7 +18,7 @@
 .\objects\main.o: C:\ti\TivaWare_C_Series-2.1.0.12573\driverlib/uart.h
 .\objects\main.o: C:\ti\TivaWare_C_Series-2.1.0.12573\driverlib/eeprom.h
 .\objects\main.o: C:\ti\TivaWare_C_Series-2.1.0.12573\utils/uartstdio.h
-.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\objects\main.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stdarg.h
 .\objects\main.o: config.h
 .\objects\main.o: config.h
 .\objects\main.o: utilities.h

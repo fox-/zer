@@ -28,6 +28,7 @@ UTILITY FUNCTIONS FOR TM4C123GH6PM MCU
 #include "utils/uartstdio.h"
 #include "config.h"
 #include "utilities.h"
+#include "adc_lib.h"
 #include "uart_lib.h"
 #include "eeprom_lib.h"
 
@@ -49,6 +50,8 @@ extern uint32_t stepMinPos;
 extern uint32_t stepMaxPos;
 extern uint32_t stepPos;
 extern uint32_t nPosOld;
+extern uint32_t ADC1_VAL;
+extern uint32_t programMode;
 
 void MKS_DELAY (uint32_t mks){
 	ROM_SysCtlDelay((ROM_SysCtlClockGet()/(3000000))* mks) ;  // more accurate
@@ -207,21 +210,99 @@ void goToPos(int nPos){
 			StepEn_Go();
 					while (stepWatch < nPos){
 						Th_FWD();
-						sprintf(UART_DATA_OUT, "|--CONTROL FWD-| Pos = %i || Angle= %i %%\n\r", stepWatch, calcStepAngle());
+						sprintf(UART_DATA_OUT, "TH -> %i %%\n\r", calcStepAngle());
 						UARTSend(UART_DATA_OUT);
+						ADC1_VAL = GetADCVal(AIN1);
+						if (calcPosToGo(ADC1_VAL) != nPosOld) break;
 					}
 					StepEn_Stop();
 		} else if (nPos < stepWatch){
 			StepEn_Go();
 					while (stepWatch > nPos){
 						Th_BWD();
-						sprintf(UART_DATA_OUT, "|--CONTROL BWD--| Pos = %i || Angle= %i %%\n\r", stepWatch, calcStepAngle());
+						sprintf(UART_DATA_OUT, "TH -> %i %%\n\r", calcStepAngle());
 						UARTSend(UART_DATA_OUT);
+						ADC1_VAL = GetADCVal(AIN1);
+						if (calcPosToGo(ADC1_VAL) != nPosOld) break;
 					}
 					StepEn_Stop();
 		}
 	}
 	
 }
+
+void initGoToMin(void){
+		if ((stepWatch>stepMinPos) && (stepWatch<=stepMaxPos)){
+				sprintf(UART_DATA_OUT, "|--- RETURNING TO INITIAL [MIN] POINT...  ---|\n\r");
+				UARTSend(UART_DATA_OUT);
+				StepEn_Go();
+				while (stepWatch > stepMinPos){
+					Th_BWD();
+				}
+				StepEn_Stop();
+				sprintf(UART_DATA_OUT, "|--INITIAL--| Pos = %i || Angle= %i %%\n\r", stepWatch, calcStepAngle());
+				UARTSend(UART_DATA_OUT);
+				sprintf(UART_DATA_OUT, "|--INITIAL--| MIN = %i || MAX= %i \n\r", GetThMin(), GetThMax());
+				
+				UARTSend(UART_DATA_OUT);
+		}
+}
+
+void initGoToMax(void){
+		if ((stepWatch<stepMaxPos) && (stepWatch>=stepMinPos)){
+				sprintf(UART_DATA_OUT, "|--- RETURNING TO INITIAL [MAX] POINT...  ---|\n\r");
+				UARTSend(UART_DATA_OUT);
+				StepEn_Go();
+				while (stepWatch < stepMaxPos){
+					Th_FWD();
+				}
+				StepEn_Stop();
+				sprintf(UART_DATA_OUT, "|--INITIAL--| Pos = %i || Angle= %i %%\n\r", stepWatch, calcStepAngle());
+				UARTSend(UART_DATA_OUT);
+				sprintf(UART_DATA_OUT, "|--INITIAL--| MIN = %i || MAX= %i \n\r", GetThMin(), GetThMax());
+				
+				UARTSend(UART_DATA_OUT);
+		}
+}
+
+uint32_t calcPosToGo(uint32_t adcValue){
+		switch (programMode) {
+			case neuro:
+				if (adcValue > 3298) return 100;
+				else if (adcValue > 3250) return 89;//!
+				else if (adcValue > 3160) return 80;//!
+				else if (adcValue > 3080) return 69;//!
+				else if (adcValue > 2990) return 60;//!
+				else if (adcValue > 2900) return 51;//!
+				else if (adcValue > 2810) return 42;//!
+				else if (adcValue > 2730) return 36;//!
+				else if (adcValue > 2650) return 29;//!
+				else if (adcValue > 2560) return 22;//!
+				else if (adcValue > 2480) return 16;//!
+				else if (adcValue > 2390) return 10;//!
+				else if (adcValue >= 2310) return 5;//!
+				else if (adcValue < 2310) return 1;//!
+			break;
+			case neuro2:
+				if (adcValue > 3298) return 1;
+				else if (adcValue > 3250) return 5;//!
+				else if (adcValue > 3160) return 10;//!
+				else if (adcValue > 3080) return 16;//!
+				else if (adcValue > 2990) return 22;//!
+				else if (adcValue > 2900) return 29;//!
+				else if (adcValue > 2810) return 36;//!
+				else if (adcValue > 2730) return 42;//!
+				else if (adcValue > 2650) return 51;//!
+				else if (adcValue > 2560) return 60;//!
+				else if (adcValue > 2480) return 69;//!
+				else if (adcValue > 2390) return 80;//!
+				else if (adcValue >= 2310) return 89;//!
+				else if (adcValue < 2310) return 100;//!
+			break;
+		}
+		
+};
+
+
 
  #endif

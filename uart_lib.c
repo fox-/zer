@@ -38,6 +38,7 @@ extern uint32_t stepWatch;
 extern uint32_t stepAngle;
 extern uint32_t stepMinPos;
 extern uint32_t stepMaxPos;
+extern uint32_t programMode;
 
 
 extern struct stateStr program;
@@ -213,9 +214,8 @@ void UART_Init(void)
 }
 
 void UART0IntHandler(void){
-		uint32_t programMode=program.mode;
-	
-    uint32_t ui32Status;
+		uint32_t ui32Status;
+		programMode=program.mode;
     //
     // Get the interrrupt status.
     //
@@ -253,6 +253,10 @@ void UART0IntHandler(void){
 					} else if (!(strcmp(UART_DATA_IN, "neuro"))){
 							programMode = neuro;
 							program.mode = neuro;
+
+					} else if (!(strcmp(UART_DATA_IN, "neuro2"))){
+							programMode = neuro2;
+							program.mode = neuro2;
 
 					} else if (!(strcmp(UART_DATA_IN, "rf"))) {
 							programMode = rf;

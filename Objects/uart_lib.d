@@ -1,8 +1,8 @@
 .\objects\uart_lib.o: uart_lib.c
-.\objects\uart_lib.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\objects\uart_lib.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-.\objects\uart_lib.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
-.\objects\uart_lib.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\uart_lib.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stdint.h
+.\objects\uart_lib.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stdio.h
+.\objects\uart_lib.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stdbool.h
+.\objects\uart_lib.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\string.h
 .\objects\uart_lib.o: C:\ti\TivaWare_C_Series-2.1.0.12573\inc/hw_ints.h
 .\objects\uart_lib.o: C:\ti\TivaWare_C_Series-2.1.0.12573\inc/hw_memmap.h
 .\objects\uart_lib.o: C:\ti\TivaWare_C_Series-2.1.0.12573\driverlib/interrupt.h
